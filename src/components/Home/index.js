@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 //import * as actions from "../../actions/index";
 import "./home.css";
 
+import DisplayList from "../DisplayList";
+
 class Home extends React.Component {
   constructor(props){
     super(props)
@@ -11,7 +13,12 @@ class Home extends React.Component {
     this.state = {
       trackers: [],
       meals: [],
-      foods: []
+      foods: [],
+      trackerId: 0,
+      mealId: 0,
+      showTracker: false,
+      showMeal: false,
+      showFood: false
     }
   };
 
@@ -29,30 +36,50 @@ class Home extends React.Component {
   dataLoad = () => {
     if(this.props.trackers.length !== 0){
       this.setState({
-        trackers: this.props.trackers
+        trackers: this.props.trackers,
+        showTracker: true
       }, () => {
-        this.listMeals(1);
+        //this.listMeals(1);
       })
     }
   };
 
+  selected = (header, id) => {
+    if(header === "Trackers"){
+      this.listMeals(id);
+    } else if (header === "Meals") {
+      this.listFood(id);
+    }
+  }
+
   listMeals = (trackerId) => {
     let tracker = this.state.trackers.filter(tracker => tracker.id === trackerId);
+    console.log("tracker:" + tracker[0].id)
+    this.setState({
+      trackerId: parseInt(tracker[0].id)
+    })
+
     if(tracker[0].meals.length !== 0){
       this.setState({
-        meals: tracker[0].meals
+        meals: tracker[0].meals.reverse(),
+        showMeal: true
       }, () => {
         console.log(this.state.meals);
-        this.listFood(1);
+      
       })
     }
   }
 
   listFood = (mealId) => {
     let meal = this.state.meals.filter(meal => meal.id === mealId);
+    this.setState({
+      mealId: parseInt(meal[0].id)
+    })
+
     if(meal[0].food.length !== 0){
       this.setState({
-        foods: meal[0].food
+        foods: meal[0].food.reverse(),
+        showFood: true
       }, () => {
         console.log(this.state.foods);
       })
@@ -67,53 +94,56 @@ class Home extends React.Component {
             <div className="banTxt">Meal Tracker</div>
           </div>
         </div>
+
         <div className="container">
           <div>
             <div>
-              {this.state.trackers.map( tracker => (
-                <div key={tracker.id}>
-                  <div className="header">Tracker</div> 
-                  <div>{tracker.trackerName}</div>
-
-                  <div>
-                    {tracker.meals ? (
-                      <div>
-                        <div className="header">Meals</div> 
-                        {tracker.meals.map( meal => (
-                          <div key={meal.id}>
-                            <div>{meal.mealName}</div>
-
-                            <div>
-                              {meal.food ? (
-                                <div>
-                                  <div className="header">Meal Item</div>
-                                  {meal.food.map( food => (
-                                    <div key={food.id}>
-                                      <div>{food.name}</div>                                
-                                    </div>
-                                  ))}
-                                </div>
-                              ) : (null)}  
-                            </div>
-
-                          </div>
-                        ))}
-                      </div>
-                    ) : (null)}  
-                  </div>
-
-                </div>
-              ))}
+              
+              <div>
+                {this.state.showTracker ? (
+                  <DisplayList
+                    show = {this.state.showTracker}
+                    header = "Trackers"
+                    add = "Tracker"
+                    url = "/tracker"
+                    list = {this.state.trackers}
+                    selected = {this.selected}
+                  ></DisplayList>
+                ):(null)}
+              </div>
+              
+              <div>
+                {this.state.trackerId !== 0 ? (
+                <DisplayList
+                    show = {this.state.showMeal}
+                    header = "Meals"
+                    add = "Meal"
+                    url = {"/tracker/" + this.state.trackerId + "/meal/"}
+                    list = {this.state.meals}
+                    trackerId = {this.state.trackerId}
+                    selected = {this.selected}
+                  ></DisplayList>
+                ) : (null)}    
+              </div>
+              <div>
+                {this.state.mealId !== 0 ? (
+                  <DisplayList
+                    show = {this.state.showFood}
+                    header = "Meal Items"
+                    add = "Meal Item"
+                    url = {"/tracker/" + this.state.trackerId + "/meal/" + this.state.mealId + "/food"}
+                    list = {this.state.foods}
+                    trackerId = {this.state.trackerId}
+                    mealId = {this.state.mealId}
+                    selected = {this.selected}
+                  ></DisplayList>
+                ) : (null)}    
+              </div>
+            
             </div>
-            {/* <div>
-              {this.state.meals.map( meal => (
-                <div key={meal.id}>
-                  <div>{meal.mealName}</div>
-                </div>
-              ))}
-            </div> */}
           </div>
         </div>
+        <br></br>
       </div>
     );
   };

@@ -1,0 +1,15 @@
+.listGuide {
+  font-size: 20px;
+}
+.listItem {
+  cursor: pointer;
+  font-weight: bold;
+  color: darkgreen;
+}
+a:link , a:visited , a:hover , a:active  {
+  color: black;
+  text-decoration-color: red;
+}
+.addItem {
+  color: blue;
+}
