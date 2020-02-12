@@ -16,13 +16,17 @@ import "./displayList.css";
 const DisplayList = (props) => {
   return (
     <div>
-      <div className="header">{props.header}</div>
+      <div className="header">{props.header} {props.group}</div>
       {props.show ? (
         <div>
           <div className="listGuide">(Select a {props.add} to view)</div>
           {props.list.map(item => (
             <div key={item.id} onClick={() => props.selected(props.header, item.id)}>
-              <div className="listItem">{item.name}</div>
+              {props.header === "Meals" ? (
+                <div className="listItem">{item.name} <span className="date">{item.createdAt}</span></div>
+              ):(
+                <div className="listItem">{item.name}</div>
+              )}
             </div>
           ))}
           <br></br>

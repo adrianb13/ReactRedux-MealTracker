@@ -16,30 +16,30 @@ export default {
   },
 
   //Meal API calls
-  getMeals: () => {
-    return axios.get("http://localhost:8080/api/meals/");
+  getMeals: (trackerId) => {
+    return axios.get("http://localhost:8080/api/trackers/" + trackerId + "/meals/");
   },
-  saveMeal: (meal) => {
-    return axios.post("http://localhost:8080/api/meals/", meal);
+  saveMeal: (trackerId, meal) => {
+    return axios.post("http://localhost:8080/api/trackers/" + trackerId + "/meals/", meal);
   },
-  updateMeal: (meal) => {
-    return axios.put("http://localhost:8080/api/meals/" + meal.id, meal);
+  updateMeal: (trackerId, meal) => {
+    return axios.put("http://localhost:8080/api/trackers/" + trackerId + "/meals/" + meal.id, meal);
   },
-  deleteMeal: (meal) => {
-    return axios.delete("http://localhost:8080/api/meals/" + meal.id);
+  deleteMeal: (trackerId, meal) => {
+    return axios.delete("http://localhost:8080/api/trackers/" + trackerId + "/meals/" + meal.id);
   },
 
   //Food API calls
-  getFoods: () => {
-    return axios.get("http://localhost:8080/api/food/");
+  getFoods: (mealId) => {
+    return axios.get("http://localhost:8080/api/meals/" + mealId+ "/food/");
   },
-  saveFood: (food) => {
-    return axios.post("http://localhost:8080/api/food/", food);
+  saveFood: (mealId, food) => {
+    return axios.post("http://localhost:8080/api/meals/" + mealId+ "/food/", food);
   },
-  updateFood: (food) => {
-    return axios.put("http://localhost:8080/api/food/" + food.id, food);
+  updateFood: (mealId, food) => {
+    return axios.put("http://localhost:8080/api/meals/" + mealId+ "/food/" + food.id, food);
   },
-  deleteFood: (food) => {
-    return axios.delete("http://localhost:8080/api/food/" + food.id);
+  deleteFood: (mealId, food) => {
+    return axios.delete("http://localhost:8080/api/meals/" + mealId+ "/food/" + food.id);
   }
 }

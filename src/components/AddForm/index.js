@@ -16,21 +16,29 @@ class AddForm extends React.Component {
       food: false,
   }
 
+  componentDidMount(){
+    this.dataload();
+  }
+
   componentDidUpdate(nextProps){
 		if(this.props.trackers !== nextProps.trackers){
       console.log("!")
-      console.log(this.props)
       this.dataload();
 		}
   };
   
   dataload = () => {
-    //Checks if meal trackers exist
+    //Checks if meal trackers exist -> form will add tracker
     if(this.props.trackers.length !== 0){
       this.setState({
         trackers: this.props.trackers,
+      }, () => {
+        this.formType();
       })
     };
+  };
+
+  formType = () => {
     //Checks if specific tracker was chosen -> form will add meal
     if(this.props.trackerId){
       this.setState({
@@ -39,6 +47,7 @@ class AddForm extends React.Component {
       })
       this.findList("tracker");
     };
+    
     //Checks if specific meal was chosen -> form will add food
     if(this.props.mealId) {
       this.setState({
@@ -50,7 +59,7 @@ class AddForm extends React.Component {
   };
 
   findList = (name) => {
-    let chosenTracker = this.props.trackers.filter(tracker => tracker.id === parseInt(this.props.trackerId));
+    let chosenTracker = this.props.trackers.filter(tracker => tracker.id === this.props.trackerId);
     if(name === "tracker"){
       this.setState({
         selTracker: chosenTracker[0]
@@ -61,7 +70,6 @@ class AddForm extends React.Component {
         selMeal: chosenMeal[0]
       }, () => console.log(this.state.selMeal)) 
     }
-    
   }
 
   formUpdate = (event) => {
@@ -69,8 +77,33 @@ class AddForm extends React.Component {
     const { name, value } = event.target;
     this.setState({
       [name]: value
-    });
+    }, () => {console.log(this.state.name)});
   };
+
+  add = () => {
+    console.log("clicked")
+    let validated = false;
+    if(this.state.name){
+      validated = true
+    }
+
+    if(validated){
+      if(this.state.food){
+        console.log("food")
+      } else if(this.state.meal){
+        console.log("meal")
+        let id = this.props.trackerId;
+        let meal = { name: this.state.name }
+        this.props.actions.saveMeal(id, meal);
+        this.props.history.push("/");
+      } else {
+        console.log("tracker")
+        let tracker = { name: this.state.name }
+        this.props.actions.saveTracker(tracker);
+        this.props.history.push("/");
+      }
+    } 
+  }
 
   render (){
     return (
@@ -110,6 +143,8 @@ class AddForm extends React.Component {
                 </div>
               </div>
             ):(null)}
+            <br></br>
+            <div onClick={this.add}>Submit</div>
             <br></br>
           </form>
         </div>

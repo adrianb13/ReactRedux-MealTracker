@@ -13,3 +13,6 @@ a:link , a:visited , a:hover , a:active  {
 .addItem {
   color: blue;
 }
+.date {
+  margin-left: 50px;
+}

@@ -18,13 +18,35 @@
   border-radius: 10px;
   padding: 0 15px;
 }
-.container {
-  width: 60%;
-  min-height: 20%;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 25px;
-  text-align: center;
-  margin: 20px auto; 
-  padding-top: 20px;
+.backDisplay{
+  cursor: pointer;
+  text-align: left;
+  color: red;
+  font-weight: bold;
+  margin-left: 50px;
+}
+i {
+  border: solid red;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 5px;
+  margin-bottom: 2px;
+}
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
 }
 
+table {
+  text-align: center;
+  border: 3px solid black;
+  border-collapse: collapse; 
+  margin: 0 auto;
+}
+th,td {
+  border: 1px solid black;
+  padding: 0 10px;
+}
+td {
+  color: green;
+}
