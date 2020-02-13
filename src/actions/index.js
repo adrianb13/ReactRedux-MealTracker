@@ -105,8 +105,6 @@ export const deleteMeal = (meal) => {
   return (dispatch) => {
     return API.deleteMeal(meal)
       .then(res => {
-        console.log(meal)
-        console.log(res.data)
         dispatch(deleteMealSuccess(res.data))
       })
       .catch(err => console.log(err));

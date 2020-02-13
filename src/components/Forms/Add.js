@@ -169,6 +169,12 @@ class AddForm extends React.Component {
     this.props.history.push("/");
   };
 
+  keyPressed(event) {
+    if (event.key === "Enter") {
+      this.add();
+    }
+  }
+
   render (){
     return (
       <div className="back">

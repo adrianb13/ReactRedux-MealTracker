@@ -121,6 +121,7 @@ class UpdateDeleteForm extends React.Component {
 
   //Validate Inputs
   validate = () => {
+    console.log("validate")
     this.setState({
       message: "***Please Enter A Name***"
     });
@@ -142,9 +143,10 @@ class UpdateDeleteForm extends React.Component {
         console.log(this.state)
         this.setState({
           message: ""
-        }, ()=>{
-          this.update() 
-        });
+        },()=>{
+          this.update()
+        }); 
+        
       };
     } else {
       if(this.state.name){
@@ -231,6 +233,12 @@ class UpdateDeleteForm extends React.Component {
     this.props.history.push("/");
   };
 
+  keyPressed(event) {
+    if (event.key === "Enter") {
+      this.validate();
+    }
+  }
+
   render (){
     return (
       <div className="back">
@@ -271,7 +279,7 @@ class UpdateDeleteForm extends React.Component {
                 <div className="message">{this.state.message}</div>
               </div>
               <div className="btnBox">
-                <div onChange={this.validate} className="addSub">Submit</div>
+                <div onClick={this.validate} className="addSub">Submit</div>
                 <div onClick={this.cancel} className="cancel">Back</div>
               </div>
               <div onClick={this.confirm} className="addAnother delete">Delete</div>

@@ -11,7 +11,7 @@ const rootReducer = ( state = initialState, action ) => {
     /* Tracker Reducers */
     case types.GET_TRACKERS_SUCCESS:
       return Object.assign({}, state, {
-				trackers: action.trackers
+				trackers: state.trackers.concat(action.trackers)
 			});
     case types.SAVE_TRACKER_SUCCESS:
       return Object.assign({}, state, {
@@ -38,7 +38,6 @@ const rootReducer = ( state = initialState, action ) => {
     
     /* Meal Reducers */
     case types.GET_MEAL_SUCCESS:
-      console.log(action.meals)
       return Object.assign({}, state, {
         meals: action.meals
       });
@@ -68,7 +67,6 @@ const rootReducer = ( state = initialState, action ) => {
 
     /* Food Reducers */
     case types.GET_FOOD_SUCCESS:
-      console.log(action.foods)
       return Object.assign({}, state, {
         foods: action.foods
       });

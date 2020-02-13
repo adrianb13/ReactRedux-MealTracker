@@ -39,7 +39,7 @@ class Home extends React.Component {
 		if(this.props.trackers !== nextProps.trackers){
 			this.dataLoad();
     }
-	};
+  };
 
   dataLoad = () => {
     if(this.props.trackers.length !== 0){
@@ -61,7 +61,6 @@ class Home extends React.Component {
     }
   }
 
-  //Fix this to use API call in actions instead
   listMeals = (tracker) => {
     this.props.actions.getMeals(tracker.id)
     .then(res => {
