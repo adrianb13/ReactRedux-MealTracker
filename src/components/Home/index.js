@@ -1,10 +1,12 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-//import * as actions from "../../actions/index";
+import * as actions from "../../actions/index";
+import { bindActionCreators } from "redux";
 import "./home.css";
 
 import DisplayList from "../DisplayList";
+import Nutrition from "../Nutrition";
 
 class Home extends React.Component {
   constructor(props){
@@ -35,9 +37,8 @@ class Home extends React.Component {
 
   componentDidUpdate(nextProps){
 		if(this.props.trackers !== nextProps.trackers){
-      console.log("!")
 			this.dataLoad();
-		}
+    }
 	};
 
   dataLoad = () => {
@@ -50,54 +51,70 @@ class Home extends React.Component {
     }
   };
 
-  selected = (header, id) => {
+  selected = (header, item) => {
     if(header === "Trackers"){
-      this.listMeals(id);
+      this.listMeals(item);
     } else if (header === "Meals") {
-      this.listFood(id);
+      this.listFood(item);
     } else if (header === "Meal Items") {
-      this.nutrition(id);
+      this.nutrition(item);
     }
   }
 
   //Fix this to use API call in actions instead
-  listMeals = (trackerId) => {
-    let tracker = this.state.trackers.filter(tracker => tracker.id === trackerId);
-    console.log("tracker:" + tracker[0].id)
-    this.setState({
-      trackerId: parseInt(tracker[0].id),
-      trackerName: "for " + tracker[0].name,
-      displayT: false,
-      displayM: true
-    })
-
-    if(tracker[0].meals.length !== 0){
+  listMeals = (tracker) => {
+    this.props.actions.getMeals(tracker.id)
+    .then(res => {
       this.setState({
-        meals: tracker[0].meals.reverse(),
-        showMeal: true,
-      }, () => {})
-    }
+        trackerId: parseInt(tracker.id),
+        trackerName: "for " + tracker.name,
+        meals: this.props.meals.reverse(),
+        showMeal: false 
+      }, () => {
+        this.setState({
+          displayT: false,
+          displayM: true
+        })
+      })
+      if(this.props.meals.length !== 0){
+        this.setState({          
+          showMeal: true
+        }, () => {})
+      }
+    })
   }
 
-  listFood = (mealId) => {
-    let meal = this.state.meals.filter(meal => meal.id === mealId);
-    this.setState({
-      mealId: parseInt(meal[0].id),
-      mealName: "for " + meal[0].name,
-      displayM: false,
-      displayF: true
+  listFood = (meal) => {
+    this.props.actions.getFoods(meal.id)
+    .then(res => {
+      this.setState({
+        mealId: parseInt(meal.id),
+        mealName: "for " + meal.name,
+        foods: this.props.foods.reverse(),
+        showFood: false
+      }, () => {
+        this.setState({
+          displayM: false,
+          displayF: true
+        })
+      })
+      if(this.props.foods.length !== 0){
+        this.setState({
+          showFood: true
+        })
+      }
     })
 
-    if(meal[0].food.length !== 0){
+    if(this.props.foods.length !== 0){
       this.setState({
-        foods: meal[0].food.reverse(),
+        foods: this.props.foods.reverse(),
         showFood: true        
       }, () => {})
     }
   }
 
-  nutrition = (foodId) => {
-    let item = this.state.foods.filter(item => item.id === foodId);
+  nutrition = (food) => {
+    let item = this.state.foods.filter(item => item.id === food.id);
     this.setState({
       selFood: item[0],
       showNutrition: true
@@ -115,7 +132,8 @@ class Home extends React.Component {
     } else if (this.state.displayF){
       this.setState({
         displayF: false,
-        displayM: true
+        displayM: true,
+        showNutrition: false
       })
     }
   }
@@ -140,7 +158,8 @@ class Home extends React.Component {
                       show = {this.state.showTracker}
                       header = "Trackers"
                       add = "Tracker"
-                      url = "/tracker"
+                      urlAdd = "/add"
+                      urlUD = "/update"
                       list = {this.state.trackers}
                       selected = {this.selected}
                     ></DisplayList>
@@ -156,7 +175,8 @@ class Home extends React.Component {
                       header = "Meals"
                       group = {this.state.trackerName}
                       add = "Meal"
-                      url = {"/tracker/" + this.state.trackerId + "/meal/"}
+                      urlAdd = {"/add/" + this.state.trackerId + "/meal/"}
+                      urlUD = {"/update/" + this.state.trackerId}
                       list = {this.state.meals}
                       trackerId = {this.state.trackerId}
                       selected = {this.selected}
@@ -173,7 +193,8 @@ class Home extends React.Component {
                       header = "Meal Items"
                       group = {this.state.mealName}
                       add = "Meal Item"
-                      url = {"/tracker/" + this.state.trackerId + "/meal/" + this.state.mealId + "/food"}
+                      urlAdd = {"/add/" + this.state.trackerId + "/" + this.state.mealId + "/food"}
+                      urlUD = {"/update/" + this.state.trackerId + "/" + this.state.mealId}
                       list = {this.state.foods}
                       trackerId = {this.state.trackerId}
                       mealId = {this.state.mealId}
@@ -185,28 +206,10 @@ class Home extends React.Component {
             </div>
 
             <div>
-              {this.state.showNutrition ? (
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>Name:</th>
-                    <th>Calories (cal):</th>
-                    <th>Fat: (g)</th>
-                    <th>Carbs: (g)</th>
-                    <th>Protein: (g)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr key={this.state.selFood.id}>
-                    <td>{this.state.selFood.name}</td>
-                    <td>{this.state.selFood.calories}</td>
-                    <td>{this.state.selFood.fat}</td>
-                    <td>{this.state.selFood.carbs}</td>
-                    <td>{this.state.selFood.protein}</td>
-                  </tr>
-                </tbody>
-              </table>
-              ):(null)}
+              <Nutrition
+                showNutrition={this.state.showNutrition}
+                selFood={this.state.selFood}
+              ></Nutrition>
             </div>
           </div>
           <br></br>
@@ -218,7 +221,15 @@ class Home extends React.Component {
 };
 
 const mapStateToProps = state => {
-  return { trackers : state.trackers}
+  return { 
+    trackers : state.trackers,
+    meals : state.meals,
+    foods : state.foods
+  }
 }
 
-export default withRouter(connect(mapStateToProps)(Home));
+const mapDispatchToProps = dispatch => {
+  return {actions: bindActionCreators(actions, dispatch)};
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));

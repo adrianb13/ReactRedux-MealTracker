@@ -19,6 +19,7 @@
   padding: 0 15px;
 }
 .backDisplay{
+  width: 100px;
   cursor: pointer;
   text-align: left;
   color: red;
@@ -37,16 +38,8 @@ i {
   -webkit-transform: rotate(135deg);
 }
 
-table {
-  text-align: center;
-  border: 3px solid black;
-  border-collapse: collapse; 
-  margin: 0 auto;
-}
-th,td {
-  border: 1px solid black;
-  padding: 0 10px;
-}
-td {
-  color: green;
+@media(max-width: 450px){
+  .backDisplay{
+    margin-left: 20px;
+  }
 }

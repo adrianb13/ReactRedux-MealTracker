@@ -13,40 +13,59 @@ import "./displayList.css";
   props.selected: (selection function)
 */
 
-const DisplayList = (props) => {
-  return (
-    <div>
-      <div className="header">{props.header} {props.group}</div>
-      {props.show ? (
-        <div>
-          <div className="listGuide">(Select a {props.add} to view)</div>
-          {props.list.map(item => (
-            <div key={item.id} onClick={() => props.selected(props.header, item.id)}>
-              {props.header === "Meals" ? (
-                <div className="listItem">{item.name} <span className="date">{item.createdAt}</span></div>
-              ):(
-                <div className="listItem">{item.name}</div>
-              )}
-            </div>
-          ))}
-          <br></br>
-          <Link to={props.url}>
-            <div className="addItem">Add a {props.add}</div>
-          </Link>
-          <br></br>
-        </div>
-      ):(
-        <div>
-          <div>Not Available</div>
-          <br></br>
-          <Link to={props.url}>
-            <div className="addItem">Add a {props.add}</div>
-          </Link>
-          <br></br>
-        </div>
-      )}
-    </div>
-  )
+class DisplayList extends React.Component {
+  format = (dateTime) => {
+    return new Date(dateTime).toLocaleDateString();
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="header">{this.props.header} {this.props.group}</div>
+        {this.props.show ? (
+          <div>
+            <div className="listGuide">(Select a {this.props.add} to view)</div>
+            {this.props.list.map(item => (
+              <div key={item.id} onClick={() => this.props.selected(this.props.header, item)}>
+                {this.props.header === "Meals" ? (
+                  <div className="itemBox">
+                    <div className="listItem listFlex">
+                      <div className="listMeal">{item.name}</div>
+                      <div className="date">{this.format(item.createdAt)}</div>
+                    </div>
+                    <Link to={this.props.urlUD + "/" + item.id} className="listUpd">
+                      <div >Update</div>
+                    </Link>
+                  </div>
+                ):(
+                  <div className="itemBox">
+                    <div className="listItem">{item.name}</div>
+                    <Link to={this.props.urlUD + "/" + item.id} className="listUpd">
+                      <div>Update</div>
+                    </Link>
+                  </div>
+                )}
+              </div>
+            ))}
+            <br></br>
+            <Link to={this.props.urlAdd}>
+              <div className="addItem">Add a {this.props.add}</div>
+            </Link>
+            <br></br>
+          </div>
+        ):(
+          <div>
+            <div>Not Available</div>
+            <br></br>
+            <Link to={this.props.urlAdd}>
+              <div className="addItem">Add a {this.props.add}</div>
+            </Link>
+            <br></br>
+          </div>
+        )}
+      </div>
+    )
+  }
 };
 
 
