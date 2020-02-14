@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ReactRedux-MealTracker/static/css/main.213cda57.chunk.css",
-    "main.js": "/ReactRedux-MealTracker/static/js/main.77022fef.chunk.js",
-    "main.js.map": "/ReactRedux-MealTracker/static/js/main.77022fef.chunk.js.map",
+    "main.js": "/ReactRedux-MealTracker/static/js/main.5e882b98.chunk.js",
+    "main.js.map": "/ReactRedux-MealTracker/static/js/main.5e882b98.chunk.js.map",
     "runtime-main.js": "/ReactRedux-MealTracker/static/js/runtime-main.0a0600bd.js",
     "runtime-main.js.map": "/ReactRedux-MealTracker/static/js/runtime-main.0a0600bd.js.map",
     "static/js/2.fa2500c7.chunk.js": "/ReactRedux-MealTracker/static/js/2.fa2500c7.chunk.js",
     "static/js/2.fa2500c7.chunk.js.map": "/ReactRedux-MealTracker/static/js/2.fa2500c7.chunk.js.map",
     "index.html": "/ReactRedux-MealTracker/index.html",
-    "precache-manifest.1d41b63f568053871db692b74f63d2c5.js": "/ReactRedux-MealTracker/precache-manifest.1d41b63f568053871db692b74f63d2c5.js",
+    "precache-manifest.8cac437cb853eecb765cb6bea146d136.js": "/ReactRedux-MealTracker/precache-manifest.8cac437cb853eecb765cb6bea146d136.js",
     "service-worker.js": "/ReactRedux-MealTracker/service-worker.js",
     "static/css/main.213cda57.chunk.css.map": "/ReactRedux-MealTracker/static/css/main.213cda57.chunk.css.map",
     "static/js/2.fa2500c7.chunk.js.LICENSE.txt": "/ReactRedux-MealTracker/static/js/2.fa2500c7.chunk.js.LICENSE.txt",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.0a0600bd.js",
     "static/js/2.fa2500c7.chunk.js",
     "static/css/main.213cda57.chunk.css",
-    "static/js/main.77022fef.chunk.js"
+    "static/js/main.5e882b98.chunk.js"
   ]
 }

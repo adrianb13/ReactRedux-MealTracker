@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4c0d944616bf78d36f5cc5a9aed036df",
+    "revision": "bd5bac700070b6aee58eec26fdd06f19",
     "url": "/ReactRedux-MealTracker/index.html"
   },
   {
-    "revision": "120a4b574c3d66820d9b",
+    "revision": "3444fdaccc255c37c7dd",
     "url": "/ReactRedux-MealTracker/static/css/main.213cda57.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ReactRedux-MealTracker/static/js/2.fa2500c7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "120a4b574c3d66820d9b",
-    "url": "/ReactRedux-MealTracker/static/js/main.77022fef.chunk.js"
+    "revision": "3444fdaccc255c37c7dd",
+    "url": "/ReactRedux-MealTracker/static/js/main.5e882b98.chunk.js"
   },
   {
     "revision": "842912c7246f0ef55248",
