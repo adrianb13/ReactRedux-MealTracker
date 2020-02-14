@@ -177,7 +177,7 @@ class UpdateDeleteForm extends React.Component {
         }
       };
       this.props.actions.updateFood(id, food);
-      this.props.history.push("/");
+      this.props.history.push("/ReactRedux-MealTracker/");
     } else if (this.state.meal){ 
       //Meal Updated
       let id = this.props.trackerId;
@@ -189,7 +189,7 @@ class UpdateDeleteForm extends React.Component {
         }
       };
       this.props.actions.updateMeal(id, meal);
-      this.props.history.push("/");
+      this.props.history.push("/ReactRedux-MealTracker/");
     } else { 
       //Tracker Updated
       let tracker = {
@@ -197,7 +197,7 @@ class UpdateDeleteForm extends React.Component {
         name: this.state.name 
       }
       this.props.actions.updateTracker(tracker);
-      this.props.history.push("/");
+      this.props.history.push("/ReactRedux-MealTracker/");
     };
   };
 
@@ -214,23 +214,23 @@ class UpdateDeleteForm extends React.Component {
       // Delete Food
       console.log("----")
       this.props.actions.deleteFood(this.props.foodId);
-      this.props.history.push("/");
+      this.props.history.push("/ReactRedux-MealTracker/");
     } else if (this.props.mealId){
       // Delete Meal
       console.log("delMeal")
       this.props.actions.deleteMeal(this.props.mealId);
-      this.props.history.push("/");
+      this.props.history.push("/ReactRedux-MealTracker/");
     } else if (this.props.trackerId){
       // Delete Tracker
       console.log("delTracker")
       this.props.actions.deleteTracker(this.props.trackerId);
-      this.props.history.push("/");
+      this.props.history.push("/ReactRedux-MealTracker/");
     }
   }
 
   //Return to Home Page
   cancel = () => {
-    this.props.history.push("/");
+    this.props.history.push("/ReactRedux-MealTracker/");
   };
 
   keyPressed(event) {

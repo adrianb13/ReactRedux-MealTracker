@@ -121,18 +121,18 @@ class AddForm extends React.Component {
         }
 
         this.props.actions.saveFood(id, food);
-        this.props.history.push("/");
+        this.props.history.push("/ReactRedux-MealTracker/");
       } else if (this.state.meal){
         let id = this.props.trackerId;
         let meal = { name: this.state.name }
 
         this.props.actions.saveMeal(id, meal);
-        this.props.history.push("/");
+        this.props.history.push("/ReactRedux-MealTracker/");
       } else {
         let tracker = { name: this.state.name }
 
         this.props.actions.saveTracker(tracker);
-        this.props.history.push("/");
+        this.props.history.push("/ReactRedux-MealTracker/");
       };
     };
   };
