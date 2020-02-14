@@ -157,8 +157,8 @@ class Home extends React.Component {
                       show = {this.state.showTracker}
                       header = "Trackers"
                       add = "Tracker"
-                      urlAdd = "/add"
-                      urlUD = "/update"
+                      urlAdd = "/ReactRedux-MealTracker/add"
+                      urlUD = "/ReactRedux-MealTracker/update"
                       list = {this.state.trackers}
                       selected = {this.selected}
                     ></DisplayList>
@@ -174,8 +174,8 @@ class Home extends React.Component {
                       header = "Meals"
                       group = {this.state.trackerName}
                       add = "Meal"
-                      urlAdd = {"/add/" + this.state.trackerId + "/meal/"}
-                      urlUD = {"/update/" + this.state.trackerId}
+                      urlAdd = {"/ReactRedux-MealTracker/add/" + this.state.trackerId + "/meal/"}
+                      urlUD = {"/ReactRedux-MealTracker/update/" + this.state.trackerId}
                       list = {this.state.meals}
                       trackerId = {this.state.trackerId}
                       selected = {this.selected}
@@ -192,8 +192,8 @@ class Home extends React.Component {
                       header = "Meal Items"
                       group = {this.state.mealName}
                       add = "Meal Item"
-                      urlAdd = {"/add/" + this.state.trackerId + "/" + this.state.mealId + "/food"}
-                      urlUD = {"/update/" + this.state.trackerId + "/" + this.state.mealId}
+                      urlAdd = {"/ReactRedux-MealTracker/add/" + this.state.trackerId + "/" + this.state.mealId + "/food"}
+                      urlUD = {"/ReactRedux-MealTracker/update/" + this.state.trackerId + "/" + this.state.mealId}
                       list = {this.state.foods}
                       trackerId = {this.state.trackerId}
                       mealId = {this.state.mealId}
