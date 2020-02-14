@@ -1,5 +1,5 @@
-This project is the front of a Meal Tracker Application
-It was created using React and Redux.
+This project is the front-end of a Meal Tracker Application.
+This portion was created using React and Redux.
 
 Deployed: https://adrianb13.github.io/ReactRedux-MealTracker/
 
