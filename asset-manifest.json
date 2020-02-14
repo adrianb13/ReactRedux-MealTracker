@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/ReactRedux-MealTracker/static/css/main.213cda57.chunk.css",
+    "main.js": "/ReactRedux-MealTracker/static/js/main.64ac07bf.chunk.js",
+    "main.js.map": "/ReactRedux-MealTracker/static/js/main.64ac07bf.chunk.js.map",
+    "runtime-main.js": "/ReactRedux-MealTracker/static/js/runtime-main.0a0600bd.js",
+    "runtime-main.js.map": "/ReactRedux-MealTracker/static/js/runtime-main.0a0600bd.js.map",
+    "static/js/2.fa2500c7.chunk.js": "/ReactRedux-MealTracker/static/js/2.fa2500c7.chunk.js",
+    "static/js/2.fa2500c7.chunk.js.map": "/ReactRedux-MealTracker/static/js/2.fa2500c7.chunk.js.map",
+    "index.html": "/ReactRedux-MealTracker/index.html",
+    "precache-manifest.f6617ba9fd8aaf0f10afd2766302195f.js": "/ReactRedux-MealTracker/precache-manifest.f6617ba9fd8aaf0f10afd2766302195f.js",
+    "service-worker.js": "/ReactRedux-MealTracker/service-worker.js",
+    "static/css/main.213cda57.chunk.css.map": "/ReactRedux-MealTracker/static/css/main.213cda57.chunk.css.map",
+    "static/js/2.fa2500c7.chunk.js.LICENSE.txt": "/ReactRedux-MealTracker/static/js/2.fa2500c7.chunk.js.LICENSE.txt",
+    "static/media/home.css": "/ReactRedux-MealTracker/static/media/banner.a1aff6c3.png",
+    "static/media/App.css": "/ReactRedux-MealTracker/static/media/wood.dcf0a3a9.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0a0600bd.js",
+    "static/js/2.fa2500c7.chunk.js",
+    "static/css/main.213cda57.chunk.css",
+    "static/js/main.64ac07bf.chunk.js"
+  ]
+}
