@@ -25,7 +25,6 @@ class UpdateDeleteForm extends React.Component {
 
   componentDidUpdate(nextProps){
 		if(this.props.trackers !== nextProps.trackers){
-      console.log("!")
       this.dataload();
 		}
   };
@@ -121,26 +120,24 @@ class UpdateDeleteForm extends React.Component {
 
   //Validate Inputs
   validate = () => {
-    console.log("validate")
     this.setState({
       message: "***Please Enter A Name***"
     });
      
     if(this.state.food){
       if(!this.state.fat){
-        this.setState({fat: this.state.selected.fat},()=>{console.log(this.state.fat)});
+        this.setState({fat: this.state.selected.fat});
       }
       if(!this.state.carbs){
-        this.setState({carbs: this.state.selected.carbs},()=>{console.log(this.state.carbs)});
+        this.setState({carbs: this.state.selected.carbs});
       }
       if(!this.state.protein){
-        this.setState({protein: this.state.selected.protein},()=>{console.log(this.state.protein)});
+        this.setState({protein: this.state.selected.protein});
       }
       if(!this.state.calories){
-        this.setState({calories: this.state.selected.calories},()=>{console.log(this.state.calories)});
+        this.setState({calories: this.state.selected.calories});
       }
       if (this.state.name){
-        console.log(this.state)
         this.setState({
           message: ""
         },()=>{
@@ -177,7 +174,7 @@ class UpdateDeleteForm extends React.Component {
         }
       };
       this.props.actions.updateFood(id, food);
-      this.props.history.push("/ReactRedux-MealTracker/");
+      this.props.history.push("/");
     } else if (this.state.meal){ 
       //Meal Updated
       let id = this.props.trackerId;
@@ -189,7 +186,7 @@ class UpdateDeleteForm extends React.Component {
         }
       };
       this.props.actions.updateMeal(id, meal);
-      this.props.history.push("/ReactRedux-MealTracker/");
+      this.props.history.push("/");
     } else { 
       //Tracker Updated
       let tracker = {
@@ -197,7 +194,7 @@ class UpdateDeleteForm extends React.Component {
         name: this.state.name 
       }
       this.props.actions.updateTracker(tracker);
-      this.props.history.push("/ReactRedux-MealTracker/");
+      this.props.history.push("/");
     };
   };
 
@@ -212,25 +209,22 @@ class UpdateDeleteForm extends React.Component {
   delete = () => {
     if(this.props.foodId){
       // Delete Food
-      console.log("----")
       this.props.actions.deleteFood(this.props.foodId);
-      this.props.history.push("/ReactRedux-MealTracker/");
+      this.props.history.push("/");
     } else if (this.props.mealId){
       // Delete Meal
-      console.log("delMeal")
       this.props.actions.deleteMeal(this.props.mealId);
-      this.props.history.push("/ReactRedux-MealTracker/");
+      this.props.history.push("/");
     } else if (this.props.trackerId){
       // Delete Tracker
-      console.log("delTracker")
       this.props.actions.deleteTracker(this.props.trackerId);
-      this.props.history.push("/ReactRedux-MealTracker/");
+      this.props.history.push("/");
     }
   }
 
   //Return to Home Page
   cancel = () => {
-    this.props.history.push("/ReactRedux-MealTracker/");
+    this.props.history.push("/");
   };
 
   keyPressed(event) {
@@ -302,7 +296,6 @@ class UpdateDeleteForm extends React.Component {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps)
   let trackerId = 0;
   if(ownProps.match.params.trackerId){
     trackerId = parseInt(ownProps.match.params.trackerId);

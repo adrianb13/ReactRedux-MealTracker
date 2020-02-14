@@ -22,7 +22,6 @@ class AddForm extends React.Component {
 
   componentDidUpdate(nextProps){
 		if(this.props.trackers !== nextProps.trackers){
-      console.log("!")
       this.dataload();
 		}
   };
@@ -108,7 +107,6 @@ class AddForm extends React.Component {
 
   //Submit Button
   add = () => {
-    console.log("clicked")
     if(this.validated()){
       if(this.state.food){
         let id = this.props.mealId;
@@ -121,25 +119,24 @@ class AddForm extends React.Component {
         }
 
         this.props.actions.saveFood(id, food);
-        this.props.history.push("/ReactRedux-MealTracker/");
+        this.props.history.push("/");
       } else if (this.state.meal){
         let id = this.props.trackerId;
         let meal = { name: this.state.name }
 
         this.props.actions.saveMeal(id, meal);
-        this.props.history.push("/ReactRedux-MealTracker/");
+        this.props.history.push("/");
       } else {
         let tracker = { name: this.state.name }
 
         this.props.actions.saveTracker(tracker);
-        this.props.history.push("/ReactRedux-MealTracker/");
+        this.props.history.push("/");
       };
     };
   };
 
   addAnother = (e) => {
     e.preventDefault();
-    console.log("clicked another")
     if(this.validated()){
       if(this.state.food){
         let id = this.props.mealId;
@@ -160,7 +157,6 @@ class AddForm extends React.Component {
           this.refs.protein.value = "";
           this.refs.calories.value = "";         
         });
-        console.log("food")
       };
     };
   };
@@ -232,7 +228,6 @@ class AddForm extends React.Component {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps)
   let trackerId = 0;
   if(ownProps.match.params.trackerId){
     trackerId = parseInt(ownProps.match.params.trackerId);
