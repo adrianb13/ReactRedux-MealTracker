@@ -66,6 +66,7 @@ class AddForm extends React.Component {
         selected: "Tracker: " + chosenTracker[0].name
       });
     } else if(name === "meal"){
+      let chosenTracker = this.props.trackers.filter(tracker => tracker.id === this.props.trackerId);
       let chosenMeal = chosenTracker[0].meals.filter(meal => meal.id === parseInt(this.props.mealId))
       this.setState({
         selected: "Meal: " + chosenMeal[0].name
