@@ -2,7 +2,7 @@
   "name": "mealtracker-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://adrianb13.github.io/ReactRedux-MealTracker/",
+  "homepage": "http://adrianb13.github.io/ReactRedux-MealTracker",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
