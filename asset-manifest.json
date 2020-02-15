@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/ReactRedux-MealTracker/static/css/main.213cda57.chunk.css",
+    "main.css": "/ReactRedux-MealTracker/static/css/main.dae748e9.chunk.css",
     "main.js": "/ReactRedux-MealTracker/static/js/main.b3e7791f.chunk.js",
     "main.js.map": "/ReactRedux-MealTracker/static/js/main.b3e7791f.chunk.js.map",
     "runtime-main.js": "/ReactRedux-MealTracker/static/js/runtime-main.0a0600bd.js",
@@ -8,9 +8,9 @@
     "static/js/2.dc9c66da.chunk.js": "/ReactRedux-MealTracker/static/js/2.dc9c66da.chunk.js",
     "static/js/2.dc9c66da.chunk.js.map": "/ReactRedux-MealTracker/static/js/2.dc9c66da.chunk.js.map",
     "index.html": "/ReactRedux-MealTracker/index.html",
-    "precache-manifest.be1c448e0acc660d837df60ed422f079.js": "/ReactRedux-MealTracker/precache-manifest.be1c448e0acc660d837df60ed422f079.js",
+    "precache-manifest.51355144c3c7f3579e7a9a6baa783d12.js": "/ReactRedux-MealTracker/precache-manifest.51355144c3c7f3579e7a9a6baa783d12.js",
     "service-worker.js": "/ReactRedux-MealTracker/service-worker.js",
-    "static/css/main.213cda57.chunk.css.map": "/ReactRedux-MealTracker/static/css/main.213cda57.chunk.css.map",
+    "static/css/main.dae748e9.chunk.css.map": "/ReactRedux-MealTracker/static/css/main.dae748e9.chunk.css.map",
     "static/js/2.dc9c66da.chunk.js.LICENSE.txt": "/ReactRedux-MealTracker/static/js/2.dc9c66da.chunk.js.LICENSE.txt",
     "static/media/home.css": "/ReactRedux-MealTracker/static/media/banner.a1aff6c3.png",
     "static/media/App.css": "/ReactRedux-MealTracker/static/media/wood.dcf0a3a9.jpg"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.0a0600bd.js",
     "static/js/2.dc9c66da.chunk.js",
-    "static/css/main.213cda57.chunk.css",
+    "static/css/main.dae748e9.chunk.css",
     "static/js/main.b3e7791f.chunk.js"
   ]
 }
