@@ -3,7 +3,7 @@ import { Router, Switch, Route } from "react-router-dom";
 
 import "./App.css";
 //import history from "./history/history";
-import createBrowserHistory from "history/createBrowserHistory";
+import { createBrowserHistory } from "history";
 import Home from "./components/Home";
 import AddForm from "./components/Forms/Add";
 import UpdateDelete from "./components/Forms/UpdateDelete";
