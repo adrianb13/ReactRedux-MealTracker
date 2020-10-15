@@ -48,7 +48,7 @@ export const deleteTracker = (tracker) => {
   return (dispatch) => {
     return API.deleteTracker(tracker)
       .then(res => {
-        dispatch(deleteTrackerSuccess(res.data))
+        dispatch(deleteTrackerSuccess(tracker))
       })
       .catch(err => console.log(err));
   };
@@ -105,7 +105,7 @@ export const deleteMeal = (meal) => {
   return (dispatch) => {
     return API.deleteMeal(meal)
       .then(res => {
-        dispatch(deleteMealSuccess(res.data))
+        dispatch(deleteMealSuccess(meal))
       })
       .catch(err => console.log(err));
   };
@@ -162,7 +162,7 @@ export const deleteFood = (food) => {
   return (dispatch) => {
     return API.deleteFood(food)
       .then(res => {
-        dispatch(deleteFoodSuccess(res.data))
+        dispatch(deleteFoodSuccess(food))
       })
       .catch(err => console.log(err));
   };

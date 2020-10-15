@@ -45,8 +45,10 @@ class Home extends React.Component {
     if(this.props.trackers.length !== 0){
       this.setState({
         trackers: this.props.trackers,
-        showTracker: true
       }, () => {
+        this.setState({
+          showTracker: true
+        })
       })
     }
   };
@@ -218,6 +220,7 @@ class Home extends React.Component {
 };
 
 const mapStateToProps = state => {
+  console.log(state.trackers)
   return { 
     trackers : state.trackers,
     meals : state.meals,

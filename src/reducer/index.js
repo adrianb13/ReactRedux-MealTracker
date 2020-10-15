@@ -26,12 +26,12 @@ const rootReducer = ( state = initialState, action ) => {
         trackers: listT
       });
     case types.DELETE_TRACKER_SUCCESS:
-      const newStateT = Object.assign([], state);
-      const removeTracker = newStateT.trackers.filter(tracker => {
-        return parseInt(tracker.id) === parseInt(action.tracker.id)
+      const newStateT = Object.assign([], state.trackers);
+      const removeTracker = newStateT.filter(tracker => {
+        return parseInt(tracker.id) === parseInt(action.tracker)
       })
-      const idT = newStateT.trackers.indexOf(removeTracker[0]);
-      newStateT.trackers.splice(idT, 1);
+      const idT = newStateT.indexOf(removeTracker[0]);
+      newStateT.splice(idT, 1);
       return Object.assign({}, state, {
         trackers: newStateT
       });
@@ -54,13 +54,12 @@ const rootReducer = ( state = initialState, action ) => {
         meals: listM
       })
     case types.DELETE_MEAL_SUCCESS:
-      console.log(action.meal)
-      const newStateM = Object.assign([], state);
-      const removeMeal = newStateM.meals.filter(meal => {
-        return parseInt(meal.id) === parseInt(action.meal.id)
+      const newStateM = Object.assign([], state.meals);
+      const removeMeal = newStateM.filter(meal => {
+        return parseInt(meal.id) === parseInt(action.meal)
       })
-      const idM = newStateM.meals.indexOf(removeMeal[0]);
-      newStateM.meals.splice(idM, 1);
+      const idM = newStateM.indexOf(removeMeal[0]);
+      newStateM.splice(idM, 1);
       return Object.assign({}, state, {
         meals: newStateM
       });
@@ -83,12 +82,12 @@ const rootReducer = ( state = initialState, action ) => {
         foods: listF
       })
     case types.DELETE_FOOD_SUCCESS:
-      const newStateF = Object.assign([], state);
-      const removeFood = newStateF.foods.filter(food => {
-        return parseInt(food.id) === parseInt(action.food.id)
+      const newStateF = Object.assign([], state.foods);
+      const removeFood = newStateF.filter(food => {
+        return parseInt(food.id) === parseInt(action.food)
       })
-      const idF = newStateF.foods.indexOf(removeFood[0]);
-      newStateF.foods.splice(idF, 1);
+      const idF = newStateF.indexOf(removeFood[0]);
+      newStateF.splice(idF, 1);
       return Object.assign({}, state, {
         foods: newStateF
       });

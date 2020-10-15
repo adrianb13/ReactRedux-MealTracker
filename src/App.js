@@ -8,7 +8,7 @@ import Home from "./components/Home";
 import AddForm from "./components/Forms/Add";
 import UpdateDelete from "./components/Forms/UpdateDelete";
 
-const history = createBrowserHistory({ basename: "/ReactRedux-MealTracker" });
+const history = createBrowserHistory({ basename: "/ReactRedux-MealTracker" }); 
 
 class App extends React.Component {
   render(){
