@@ -11,8 +11,8 @@ const rootReducer = ( state = initialState, action ) => {
     /* Tracker Reducers */
     case types.GET_TRACKERS_SUCCESS:
       return Object.assign({}, state, {
-				trackers: state.trackers.concat(action.trackers)
-			});
+	trackers: state.trackers.concat(action.trackers)
+      });
     case types.SAVE_TRACKER_SUCCESS:
       return Object.assign({}, state, {
         trackers: state.trackers.concat(action.tracker)
